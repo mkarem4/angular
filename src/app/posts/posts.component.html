@@ -1,1 +1,18 @@
+<label>Post Title - Event Binding
+  <input type="text" class="form-control" (input)="onUpdatePostTitle($event)"/>
+</label>
+
+<br>
+
+<label>Post Title - Two Way Binding
+  <input type="text" class="form-control" [(ngModel)]="postTitle"/>
+</label>
+<br>
+<!--<p>{{ postTitle }}</p>-->
+
+<!-- data and event binding-->
+<button class="btn btn-primary" [disabled]="!allowNewPost" (click)="onCreatePost()">Add Post</button>
+<!--property binding-->
+<!--<p [innerText]="allowNewPost"></p>-->
+<p>{{ postCreationStatus}}</p>
 <p>This post with Id {{ postId }} is {{ getPostStatus() }} !</p>
