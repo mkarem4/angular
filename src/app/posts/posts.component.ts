@@ -11,8 +11,11 @@ export class PostsComponent implements OnInit {
   allowNewPost = false;
   postCreationStatus = 'No posts were created !';
   postTitle = 'Angular';
+  postCreated = false;
+  posts = ['Laravel', 'Symfony', 'Wordpress'];
 
   constructor() {
+    this.postStatus = Math.random() > 0.5 ? 'published' : 'draft';
     setTimeout(() => {
       this.allowNewPost = true;
     }, 2000);
@@ -26,11 +29,17 @@ export class PostsComponent implements OnInit {
   }
 
   onCreatePost() {
+    this.postCreated = true;
+    this.posts.push(this.postTitle);
     this.postCreationStatus = 'Post was created with title : ' + this.postTitle;
   }
 
   onUpdatePostTitle(event: any) {
     this.postTitle = (event.target as HTMLInputElement).value;
+  }
+
+  getColor() {
+    return this.postStatus === 'published' ? 'green' : 'red';
   }
 
 }

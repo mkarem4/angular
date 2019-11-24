@@ -12,7 +12,17 @@
 
 <!-- data and event binding-->
 <button class="btn btn-primary" [disabled]="!allowNewPost" (click)="onCreatePost()">Add Post</button>
+<br>
 <!--property binding-->
 <!--<p [innerText]="allowNewPost"></p>-->
-<p>{{ postCreationStatus}}</p>
-<p>This post with Id {{ postId }} is {{ getPostStatus() }} !</p>
+<!--<p>{{ postCreationStatus}}</p>-->
+<p *ngIf="postCreated; else noPosts">Post is created and the title is {{ postTitle }}</p>
+<ng-template #noPosts>
+  <p>No posts were created !</p>
+</ng-template>
+<br>
+
+<p *ngFor="let post of posts" [ngStyle]="{backgroundColor: getColor()}"
+   [ngClass]="{published: postStatus === 'published'}">
+  This post with title {{ post }} is {{ getPostStatus() }} !
+</p>
