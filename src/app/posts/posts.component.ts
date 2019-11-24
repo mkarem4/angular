@@ -15,4 +15,8 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
   }
 
+  getPostStatus(){
+    return this.postStatus;
+  }
+
 }
